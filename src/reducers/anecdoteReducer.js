@@ -41,3 +41,10 @@ const reducer = (state = initialState, action) => {
   }
 };
 export default reducer;
+export function setVotes(id) {
+  return { type: "VOTE", data: { id } };
+}
+
+export function setAnecdote(content) {
+  return { type: "ADD", data: { content } };
+}
