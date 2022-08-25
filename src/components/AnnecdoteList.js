@@ -1,16 +1,21 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setVotes } from "../reducers/anecdoteReducer";
+import { increaseVote } from "../reducers/anecdoteReducer";
+
+// import { setVotes } from "../reducers/anecdoteReducer";
+
 export function AnnecdoteList() {
-  const anecdotes = useSelector((state) => state);
-  const sortedAnecdotes = anecdotes.sort((a, b) => b.votes - a.votes);
+  const anecdotes = useSelector((state) => state.anecdotes);
+  console.log(anecdotes);
+  const sortedAnecdotes = [...anecdotes].sort((a, b) => b.votes - a.votes);
+  console.log("sorted".sortedAnecdotes);
 
   const dispatch = useDispatch();
 
   const vote = (id) => {
     // console.log('vote', id)
     // dispatch({ type: "VOTE", data: { id } });
-    dispatch(setVotes(id));
+    dispatch(increaseVote(id));
   };
 
   return (
