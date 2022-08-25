@@ -1,3 +1,4 @@
+import { AnecdoteForm } from "./components/AnecdoteForm";
 import { useSelector, useDispatch } from "react-redux";
 import { setVotes, setAnecdote } from "./reducers/anecdoteReducer";
 
@@ -33,12 +34,7 @@ const App = () => {
         </div>
       ))}
       <h2>create new</h2>
-      <form onSubmit={addAnecdote}>
-        <div>
-          <input name="anecdote" />
-        </div>
-        <button type="submit">create</button>
-      </form>
+      <AnecdoteForm addAnecdote={addAnecdote} />
     </div>
   );
 };
