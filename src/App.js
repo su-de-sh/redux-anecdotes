@@ -5,16 +5,15 @@ import { AnnecdoteList } from "./components/AnnecdoteList";
 import { AnecdoteForm } from "./components/AnecdoteForm";
 import Notification from "./components/Notification";
 import Filter from "./components/Filter";
-import anecdoteService from "./services/anecdoteService";
-import { appendNewAnecdote } from "./reducers/anecdoteReducer";
+// import anecdoteService from "./services/anecdoteService";
+// import { setAnecdote } from "./reducers/anecdoteReducer";
+import { initializeAnecdotes } from "./reducers/anecdoteReducer";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    anecdoteService
-      .getAll()
-      .then((response) => dispatch(appendNewAnecdote(response)));
+    dispatch(initializeAnecdotes());
   }, [dispatch]);
 
   return (

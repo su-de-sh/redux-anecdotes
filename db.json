@@ -34,6 +34,11 @@
       "content": "Adding another anecdote",
       "votes": 0,
       "id": "gOszn8z"
+    },
+    {
+      "content": "New note after using redux-thunk",
+      "votes": 0,
+      "id": "w3eBWRm"
     }
   ]
 }
