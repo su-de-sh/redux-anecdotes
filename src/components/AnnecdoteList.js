@@ -10,6 +10,7 @@ import {
 
 export function AnnecdoteList() {
   const anecdotes = useSelector((state) => state.anecdotes);
+
   const filterChar = useSelector((state) => state.filters);
 
   const filteredAnecdotes = anecdotes.filter((anecdote) =>

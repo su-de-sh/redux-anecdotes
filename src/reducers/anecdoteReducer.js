@@ -11,13 +11,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // const getId = () => (100000 * Math.random()).toFixed(0);
 
-const asObject = (anecdote) => {
-  return {
-    content: anecdote,
+// const asObject = (anecdote) => {
+//   return {
+//     content: anecdote,
 
-    votes: 0,
-  };
-};
+//     votes: 0,
+//   };
+// };
 
 // const initialState = anecdotesAtStart.map(asObject);
 
@@ -63,7 +63,7 @@ const anecdoteSlice = createSlice({
       });
     },
     addNewAnecdote(state, action) {
-      const newAnnecdote = asObject(action.payload);
+      const newAnnecdote = action.payload;
       return [...state, newAnnecdote];
     },
 
