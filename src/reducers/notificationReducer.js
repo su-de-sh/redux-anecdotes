@@ -9,10 +9,20 @@ const notificationSlice = createSlice({
       return message;
     },
     removeNotification(state, action) {
+      console.log("called");
       return null;
     },
   },
 });
+
+export const updateNotification = (message, timeout) => {
+  return (dispatch) => {
+    dispatch(setNotification(message));
+    setTimeout(() => {
+      dispatch(removeNotification());
+    }, timeout * 1000);
+  };
+};
 
 export const { setNotification, removeNotification } =
   notificationSlice.actions;
