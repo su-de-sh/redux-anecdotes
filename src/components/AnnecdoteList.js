@@ -10,8 +10,15 @@ import {
 
 export function AnnecdoteList() {
   const anecdotes = useSelector((state) => state.anecdotes);
+  const filterChar = useSelector((state) => state.filters);
 
-  const sortedAnecdotes = [...anecdotes].sort((a, b) => b.votes - a.votes);
+  const filteredAnecdotes = anecdotes.filter((anecdote) =>
+    anecdote.content.includes(filterChar)
+  );
+
+  const sortedAnecdotes = [...filteredAnecdotes].sort(
+    (a, b) => b.votes - a.votes
+  );
 
   const dispatch = useDispatch();
 
