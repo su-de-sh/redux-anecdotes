@@ -6,9 +6,8 @@ import { increaseVote } from "../reducers/anecdoteReducer";
 
 export function AnnecdoteList() {
   const anecdotes = useSelector((state) => state.anecdotes);
-  console.log(anecdotes);
+
   const sortedAnecdotes = [...anecdotes].sort((a, b) => b.votes - a.votes);
-  console.log("sorted".sortedAnecdotes);
 
   const dispatch = useDispatch();
 
