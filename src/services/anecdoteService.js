@@ -7,6 +7,13 @@ const createNew = (content) => {
   const newAnecdote = { content, votes: 0 };
   return axios.post(baseUrl, newAnecdote).then((response) => response.data);
 };
-const anecdoteService = { getAll, createNew };
+const updateVote = (id, anecdoteToUpdate) => {
+  return axios.put(`${baseUrl}/${id}`, anecdoteToUpdate).then((response) => {
+    // console.log("response by axios", response);
+    return response.data;
+  });
+};
+
+const anecdoteService = { getAll, createNew, updateVote };
 
 export default anecdoteService;
