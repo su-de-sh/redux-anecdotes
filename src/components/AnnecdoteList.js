@@ -1,6 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increaseVote } from "../reducers/anecdoteReducer";
+import {
+  setNotification,
+  removeNotification,
+} from "../reducers/notificationReducer";
 
 // import { setVotes } from "../reducers/anecdoteReducer";
 
@@ -15,6 +19,12 @@ export function AnnecdoteList() {
     // console.log('vote', id)
     // dispatch({ type: "VOTE", data: { id } });
     dispatch(increaseVote(id));
+    const anecdote = anecdotes.find((anecdote) => anecdote.id === id);
+
+    dispatch(setNotification(`you voted '${anecdote.content}' `));
+    setTimeout(() => {
+      dispatch(removeNotification());
+    }, 5000);
   };
 
   return (
