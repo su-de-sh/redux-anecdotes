@@ -15,7 +15,7 @@ export function AnecdoteForm() {
 
     dispatch(addNewAnecdote(newAnecdote));
     // dispatch(setNotification(`added '${content}'`));
-    dispatch(updateNotification(`added '${content}'`, 2));
+    dispatch(updateNotification(`added '${content}'`, 5));
     // setTimeout(() => dispatch(removeNotification()), 5000);
     event.target.anecdote.value = "";
   };
