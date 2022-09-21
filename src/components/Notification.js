@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux";
+/* eslint-disable react/prop-types */
+// import { useSelector } from "react-redux";
+
+import { connect } from "react-redux";
 import React from "react";
 
-const Notification = () => {
-  const notification = useSelector((state) => state.notifications);
+const Notification = (props) => {
+  // const notification = useSelector((state) => state.notifications);
 
   const style = {
     border: "solid",
@@ -10,9 +13,15 @@ const Notification = () => {
     borderWidth: 1,
   };
 
-  if (!notification) return null;
+  if (!props.notifications) return null;
 
-  return <div style={style}>{notification}</div>;
+  return <div style={style}>{props.notifications}</div>;
+};
+const mapStateToProps = (state) => {
+  return {
+    notifications: state.notifications,
+  };
 };
 
-export default Notification;
+const ConnectedNotification = connect(mapStateToProps)(Notification);
+export default ConnectedNotification;
