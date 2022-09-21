@@ -1,12 +1,13 @@
-import { useDispatch } from "react-redux";
+/* eslint-disable react/prop-types */
+import { connect } from "react-redux";
 import { setFilter } from "../reducers/filterReducer";
 import React from "react";
-const Filter = () => {
-  const dispatch = useDispatch();
+const Filter = (props) => {
+  // const dispatch = useDispatch();
   const handleChange = (event) => {
     // input-field value is in variable event.target.value
 
-    dispatch(setFilter(event.target.value));
+    props.setFilter(event.target.value);
   };
   const style = {
     marginBottom: 10,
@@ -19,4 +20,15 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+const mapStateToProps = (state) => {
+  return {
+    filters: state.filters,
+  };
+};
+
+const mapDispatchToProps = {
+  setFilter,
+};
+
+const ConnectedFilter = connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default ConnectedFilter;
