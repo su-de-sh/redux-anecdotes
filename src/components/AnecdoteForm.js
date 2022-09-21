@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { addNewAnecdote } from "../reducers/anecdoteReducer";
 import { updateNotification } from "../reducers/notificationReducer";
 import anecdoteService from "../services/anecdoteService";
 
-export function AnecdoteForm() {
-  const dispatch = useDispatch();
+const AnecdoteForm = (props) => {
+  // const dispatch = useDispatch();
 
   const addAnecdote = async (event) => {
     event.preventDefault();
@@ -13,9 +15,11 @@ export function AnecdoteForm() {
 
     const newAnecdote = await anecdoteService.createNew(content);
 
-    dispatch(addNewAnecdote(newAnecdote));
+    // dispatch(addNewAnecdote(newAnecdote));
+    props.addNewAnecdote(newAnecdote);
     // dispatch(setNotification(`added '${content}'`));
-    dispatch(updateNotification(`added '${content}'`, 5));
+    // dispatch(updateNotification(`added '${content}'`, 5));
+    props.updateNotification(`added '${content}'`, 5);
     // setTimeout(() => dispatch(removeNotification()), 5000);
     event.target.anecdote.value = "";
   };
@@ -31,4 +35,22 @@ export function AnecdoteForm() {
       </form>
     </>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    anecdotes: state.anecdotes,
+  };
+};
+
+const mapDispatchToProps = {
+  addNewAnecdote,
+  updateNotification,
+};
+
+const ConnectedAnnecdote = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AnecdoteForm);
+
+export default ConnectedAnnecdote;

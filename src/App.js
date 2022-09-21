@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AnnecdoteList } from "./components/AnnecdoteList";
-import { AnecdoteForm } from "./components/AnecdoteForm";
+import AnecdoteForm from "./components/AnecdoteForm";
 import Notification from "./components/Notification";
 import Filter from "./components/Filter";
 // import anecdoteService from "./services/anecdoteService";
